@@ -41,10 +41,10 @@ class AuthController extends Controller
 
         $user = User::where('email', $request->email)->first();
 
-        return $this->success([
+        return $this->successResponse([
             'user' => $user,
             'token' => $user->createToken('API token of ' . $user->name . '.')->plainTextToken
-        ]);
+        ], "Successfully authenticated.");
     }
 
     public function logout()
